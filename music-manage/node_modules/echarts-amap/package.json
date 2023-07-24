@@ -1,0 +1,31 @@
+{
+  "name": "echarts-amap",
+  "version": "1.0.0-rc.6",
+  "description": "\u0016an echarts extension to support AMap(http://lbs.amap.com/)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --hot",
+    "build": "webpack -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billy-poon/echarts-amap.git"
+  },
+  "keywords": [
+    "echarts",
+    "amap",
+    "alimap",
+    "autonavi"
+  ],
+  "author": "Billy Poon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/billy-poon/echarts-amap/issues"
+  },
+  "homepage": "https://github.com/billy-poon/echarts-amap#readme",
+  "devDependencies": {
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}

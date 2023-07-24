@@ -1,0 +1,44 @@
+{
+  "name": "utils-lite",
+  "version": "0.1.10",
+  "description": "utils for smaller and convenient ",
+  "main": "lib/index.es.js",
+  "scripts": {
+    "dev": "rollup -wc build/watch.js",
+    "dev:css": "node build/dev-css",
+    "build": "rm -f -r lib && node build/build.js",
+    "prepublishOnly": "npm run build",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiguaxigua/utils-lite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiguaxigua/utils-lite/issues"
+  },
+  "homepage": "http://daxigua.me/utils-lite",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "conventional-changelog-cli": "^2.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "less-packer": "0.0.3",
+    "rollup": "^0.59.4",
+    "rollup-plugin-babel": "^3.0.4",
+    "rollup-plugin-commonjs": "^9.1.3",
+    "rollup-plugin-eslint": "^4.0.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^4.0.0",
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.3.28"
+  }
+}

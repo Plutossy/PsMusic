@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.psmusic.dao.SongListMapper">
+    <resultMap id="BaseResultMap" type="com.example.psmusic.domain.SongList">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="pic" jdbcType="VARCHAR" property="pic"/>
+        <result column="style" jdbcType="VARCHAR" property="style"/>
+    </resultMap>
+
+    <resultMap id="ResultMapWithBLOBs" type="com.example.psmusic.domain.SongList" extends="BaseResultMap">
+        <result column="introduction" jdbcType="LONGVARCHAR" property="introduction"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,pic,style
+    </sql>
+
+    <sql id="Blob_Column_List">
+        id,title,pic,introduction,style
+    </sql>
+
+    <insert id="insert" parameterType="com.example.psmusic.domain.SongList">
+        insert into song_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="title != null">title,</if>
+            <if test="pic != null">pic,</if>
+            <if test="introduction != null">introduction,</if>
+            <if test="style != null">style,</if>
+        </trim>
+        <trim prefix=" values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="title != null">#{title},</if>
+            <if test="pic != null">#{pic},</if>
+            <if test="introduction != null">#{introduction},</if>
+            <if test="style != null">#{style},</if>
+        </trim>
+    </insert>
+
+    <update id="update" parameterType="com.example.psmusic.domain.SongList">
+        update song_list
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="pic != null">pic = #{pic},</if>
+            <if test="introduction != null">introduction = #{introduction},</if>
+            <if test="style != null">style = #{style},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete
+        from song_list
+        where id = #{id}
+    </delete>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Blob_Column_List"/>
+        from song_list
+        where id = #{id}
+    </select>
+
+    <select id="allSongList" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Blob_Column_List"/>
+        from song_list
+    </select>
+
+    <select id="songListOfTitle" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Blob_Column_List"/>
+        from song_list
+        where title = #{title}
+    </select>
+
+    <select id="likeTitle" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Blob_Column_List"/>
+        from song_list
+        where title like #{title}
+    </select>
+
+    <select id="likeStyle" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Blob_Column_List"/>
+        from song_list
+        where style like #{style}
+    </select>
+</mapper>

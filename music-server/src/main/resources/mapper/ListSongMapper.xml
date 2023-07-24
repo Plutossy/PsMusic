@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.psmusic.dao.ListSongMapper">
+    <resultMap id="BaseResultMap" type="com.example.psmusic.domain.ListSong" >
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="song_id" jdbcType="INTEGER" property="songId"/>
+        <result column="song_list_id" jdbcType="INTEGER" property="songListId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,song_id,song_list_id
+    </sql>
+
+    <insert id="insert" parameterType="com.example.psmusic.domain.ListSong">
+        insert into list_song
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="songId != null">
+                song_id,
+            </if>
+            <if test="songListId != null">
+                song_list_id,
+            </if>
+        </trim>
+        <trim prefix=" values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="songId != null">
+                #{songId},
+            </if>
+            <if test="songListId != null">
+                #{songListId},
+            </if>
+        </trim>        
+    </insert>
+    
+    <update id="update" parameterType="com.example.psmusic.domain.ListSong">
+        update list_song
+        <set>
+            <if test="songId != null">
+                song_id = #{songId},
+            </if>
+            <if test="songListId != null">
+                song_list_id = #{songListId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from list_song
+        where id = #{id}
+    </delete>
+
+    <delete id="deleteBySongIdAndSongListId" parameterType="java.util.HashMap">
+        delete from list_song
+        where song_id = #{songId} and song_list_id = #{songListId}
+    </delete>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from list_song
+        where id = #{id}
+    </select>
+
+    <select id="allListSong" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from list_song
+    </select>
+
+    <select id="listSongOfSongListId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from list_song
+        where song_list_id = #{songListId}
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

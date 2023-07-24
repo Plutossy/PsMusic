@@ -1,0 +1,23 @@
+@import "var.scss";
+
+.home {
+  margin-top: $header-height - 10px;
+  .section {
+    width: 100%;
+    margin-top: 20px;
+    padding: $content-padding;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    box-sizing: border-box;
+    .section-title {
+      height: 60px;
+      line-height: 60px;
+      padding-top: 10px;
+      font-size: 35px;
+      font-weight: 500;
+      font-style: italic;
+      text-align: center;
+      color: $color-white;
+      box-sizing: border-box;
+    }
+  }
+}
