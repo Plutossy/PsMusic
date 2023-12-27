@@ -370,8 +370,8 @@ export default {
         document.body.removeChild(eleLink)
       }).catch(err => {
         console.log(err)
-        this.$messge({
-          messge: '下载失败',
+        this.$message({
+          message: '下载失败',
           type: 'error'
         })
       })
